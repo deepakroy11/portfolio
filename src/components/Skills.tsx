@@ -1,16 +1,17 @@
-import { FaReact, FaJs, FaFigma } from "react-icons/fa";
-import { SiNextdotjs, SiTailwindcss, SiTypescript } from "react-icons/si";
-import { Card, CardBody } from "@heroui/react";
+import { Card, CardBody, Image } from "@heroui/react";
 
-export default function Skills() {
-  const skills = [
-    { name: "JavaScript", icon: <FaJs className="text-yellow-500" /> },
-    { name: "React", icon: <FaReact className="text-blue-500" /> },
-    { name: "Next.js", icon: <SiNextdotjs className="text-black" /> },
-    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400" /> },
-    { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
-    { name: "Figma", icon: <FaFigma className="text-pink-500" /> },
-  ];
+
+
+type SkillsProps = { 
+  id:string;
+  title: string;
+  summary:string;
+  image:string;
+  createdAt: string;   // ISO date string
+  updatedAt: string;   // ISO date
+};
+
+export default function Skills({skills}:{skills: SkillsProps[]}) {
 
   return (
     <section id="skills" className="py-24 px-6 ">
@@ -20,12 +21,12 @@ export default function Skills() {
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
         {skills.map((skill) => (
           <Card
-            key={skill.name}
+            key={skill.id}
             className="text-center hover:shadow-lg transition-transform duration-300 group-hover:scale-110 hover:scale-110"
           >
             <CardBody className="flex flex-col items-center justify-center">
-              <div className="text-4xl mb-3 ">{skill.icon}</div>
-              <span className="font-medium">{skill.name}</span>
+              <div className="text-4xl mb-3 "><Image width={50} className="rounded-none" src={skill.image} alt={skill.title} /></div>
+              <span className="font-medium">{skill.title}</span>
             </CardBody>
           </Card>
         ))}

@@ -1,43 +1,75 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
+
+This is a modern and responsive portfolio frontend built with [Next.js](https://nextjs.org), [Hero UI](https://heroui.dev/), and [Tailwind CSS](https://tailwindcss.com/). The project showcases personal blog posts, featured projects, and developer tools in a clean, performant layout. It includes dynamic routing, optimized image handling, and a theme toggle for dark/light mode.
+
+## Features
+
+- ⚡ Built with Next.js App Router
+- 🎨 Styled using Tailwind CSS and Hero UI components
+- 🌓 Dark/Light mode toggle
+- 🖼️ Optimized image handling
+- 📝 Blog section
+- 💼 Project showcase with details page
+- 🌐 Responsive design
+- 🔗 Social and external links
+
+## Project Structure
+
+```
+.
+├── public/                # Static assets (images, SVGs)
+├── src/
+│   ├── app/               # Next.js app directory (routing, pages, API)
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   └── project-details/
+│   │       └── page.tsx
+│   ├── components/        # Reusable UI components (About, Projects, etc.)
+│   ├── context/           # React context providers
+│   ├── data/              # Static data files
+│   ├── hero.ts            # Hero section logic
+│   ├── styles/            # Custom styles
+│   └── theme/             # Theme configuration
+├── tailwind.config.ts     # Tailwind CSS config
+├── next.config.ts         # Next.js config
+├── package.json           # Project metadata and scripts
+└── README.md
+```
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Customization
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Add your projects in [`src/components/Projects.tsx`](src/components/Projects.tsx)
+- Update project details in [`src/app/project-details/page.tsx`](src/app/project-details/page.tsx)
+- Replace images in the [public/](public/) directory
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Hero UI Documentation](https://heroui.dev/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deploy easily on [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-# Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-# portfolio
-
-A modern and responsive portfolio frontend built with [Next.js], [Hero UI] and [Tailwind CSS]. This project showcases personal blog posts, featured projects, and developer tools in a clean, performant layout. It includes dynamic routing, optimized image handling, and a theme toggle for dark/light mode. Ideal for developers looking to present their work and writing in a professional and elegant way.
-
-> > > > > > > cdd18836f98d6af4dcd364584da4956326216e15
+For more deployment options,

@@ -4,13 +4,26 @@ import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 
-export default function Home() {
+export default async function Home() {
+  let skillsData = null;
+  try {
+    skillsData = await fetch(`${process.env.API_URL}settings/skill`).then(res => res.json());
+  } catch {
+    skillsData = null;
+  }
+  let basicDetailsData = null;
+  try {
+    basicDetailsData = await fetch(`${process.env.API_URL}settings/basic-details`).then(res => res.json());
+  } catch {
+    basicDetailsData = null;
+  }
+
   return (
     <div>
-      <Hero />
+      <Hero basicDetails={basicDetailsData?.basicDetails} />
       <About />
       <Projects />
-      <Skills />
+      <Skills skills={skillsData?.skills} />
       <Contact />
     </div>
   );
