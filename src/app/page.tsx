@@ -6,14 +6,19 @@ import Skills from "@/components/Skills";
 
 export default async function Home() {
   let skillsData = null;
+
   try {
-    skillsData = await fetch(`${process.env.API_URL}settings/skill`).then(res => res.json());
+    skillsData = await fetch(`${process.env.API_URL}/settings/skill`).then(
+      (res) => res.json()
+    );
   } catch {
     skillsData = null;
   }
   let basicDetailsData = null;
   try {
-    basicDetailsData = await fetch(`${process.env.API_URL}settings/basic-details`).then(res => res.json());
+    basicDetailsData = await fetch(
+      `${process.env.API_URL}/settings/basic-details`
+    ).then((res) => res.json());
   } catch {
     basicDetailsData = null;
   }
@@ -21,10 +26,10 @@ export default async function Home() {
   return (
     <div>
       <Hero basicDetails={basicDetailsData?.basicDetails} />
-      <About />
+      <About basicDetails={basicDetailsData?.basicDetails} />
       <Projects />
       <Skills skills={skillsData?.skills} />
-      <Contact />
+      <Contact basicDetails={basicDetailsData?.basicDetails} />
     </div>
   );
 }

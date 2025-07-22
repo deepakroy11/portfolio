@@ -1,6 +1,5 @@
 import { Button, Image, Link } from "@heroui/react";
 
-
 // You can place this type in a types file or at the top of your component file
 
 type BasicDetails = {
@@ -11,20 +10,21 @@ type BasicDetails = {
   aboutMeImage: string;
   profileImage: string;
   contactEmail: string;
-  createdAt: string;   
-  updatedAt: string;   
-}
+  createdAt: string;
+  updatedAt: string;
+};
 
-export default function Hero({basicDetails}:{basicDetails: BasicDetails}) {
-  console.log(basicDetails)
+export default function Hero({ basicDetails }: { basicDetails: BasicDetails }) {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center text-center gap-4">
       <Image
-        src="/avatar.jpg"
+        src={`${process.env.BASE_URL}/${basicDetails.profileImage}`}
         alt="Your Avatar"
         className="w-32 h-32 rounded-full shadow-lg mb-6"
       />
-      <h1 className="text-5xl font-bold">Hi, I&apos;m {basicDetails.siteName}</h1>
+      <h1 className="text-5xl font-bold">
+        Hi, I&apos;m {basicDetails.siteName}
+      </h1>
       <p className="mt-4 text-xl">{basicDetails.tagLine}</p>
       <Button
         as={Link}
