@@ -12,9 +12,7 @@ type SkillsProps = {
 export default function Skills({ skills }: { skills: SkillsProps[] }) {
   return (
     <section id="skills" className="py-24 px-6 ">
-      <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
-        Skills & Tools
-      </h2>
+      <h2 className="text-4xl font-bold text-center mb-16">Skills & Tools</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
         {skills.map((skill) => (
           <Card

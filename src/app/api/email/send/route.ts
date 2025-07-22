@@ -18,8 +18,8 @@ export async function POST(req: NextRequest) {
 
     //TODO: Need to comfigure the Domain on Resent and Hostinger
     const { data, error } = await resend.emails.send({
-      from: "Portfolio Contact <onboarding@resend.dev>",
-      to: [process.env.CONTACT_EMAIL || "delivered@resend.dev"],
+      from: `Portfolio Contact <${process.env.FROM_EMAIL}>`,
+      to: [process.env.CONTACT_EMAIL || "deepakroy11@gmail.com"],
       subject: `New Contact Form Message from ${name}`,
       react: ContactEmailTemplate({ name, email, message }),
       replyTo: email,
