@@ -20,7 +20,7 @@ export default function Hero({ basicDetails }: { basicDetails: BasicDetails }) {
       <Image
         src={`${process.env.BASE_URL}/${basicDetails.profileImage}`}
         alt="Your Avatar"
-        className="w-32 h-32 rounded-full shadow-lg mb-6"
+        className="w-40 h-40 rounded-full shadow-lg mb-6"
       />
       <h1 className="text-5xl font-bold">
         Hi, I&apos;m {basicDetails.siteName}
