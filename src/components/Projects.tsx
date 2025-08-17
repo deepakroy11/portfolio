@@ -8,46 +8,119 @@ import {
   Chip,
 } from "@heroui/react";
 
-export default function Projects() {
-  const projects = [
+type SkillsProps = {
+  id: string;
+  title: string;
+  summary: string;
+  image: string;
+  createdAt: string; // ISO date string
+  updatedAt: string; // ISO date
+};
+
+type Project = {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  skills: SkillsProps[];
+  link: string;
+};
+
+export default function Projects({ projects }: { projects?: Project[] }) {
+  console.log("Projects received:", projects);
+
+  const defaultProjects: Project[] = [
     {
       id: 1,
       title: "Linkify",
       description:
-        "Linkify is a web application for creating short links and generating QR codes. It features a React front end styled with Tailwind CSS and Hero UI, and is powered by a Node.js + Express back end for processing and link management. The platform offers a simple, modern interface for quickly transforming long URLs into concise, shareable links, complete with optional QR codes for easy offline sharing.",
+        "Linkify is a web application for creating short links and generating QR codes. It features a React front end styled with Tailwind CSS and Hero UI, and is powered by a Node.js + Express back end for processing and link management.",
       image: "/projects/linkify-white.png",
-      tech: ["React", "Tailwind", "Node"],
+      skills: [
+        {
+          id: "1",
+          title: "React",
+          summary: "",
+          image: "",
+          createdAt: "",
+          updatedAt: "",
+        },
+        {
+          id: "2",
+          title: "Tailwind",
+          summary: "",
+          image: "",
+          createdAt: "",
+          updatedAt: "",
+        },
+        {
+          id: "3",
+          title: "Node",
+          summary: "",
+          image: "",
+          createdAt: "",
+          updatedAt: "",
+        },
+      ],
       link: "https://linkify.deepakroy.dev/",
     },
     {
       id: 2,
       title: "Finly",
       description:
-        "Finly is a web application built with Next.js, Tailwind CSS, and Material UI that provides tools for performing various types of financial calculations. It offers a clean, modern interface to help users easily compute and manage different personal or business finance scenarios.",
+        "Finly is a web application built with Next.js, Tailwind CSS, and Material UI that provides tools for performing various types of financial calculations.",
       image: "/projects/finly-white.png",
-      tech: ["Next.js", "React", "Tailwind CSS", "Material UI"],
+      skills: [
+        {
+          id: "4",
+          title: "Next.js",
+          summary: "",
+          image: "",
+          createdAt: "",
+          updatedAt: "",
+        },
+        {
+          id: "5",
+          title: "React",
+          summary: "",
+          image: "",
+          createdAt: "",
+          updatedAt: "",
+        },
+        {
+          id: "6",
+          title: "Tailwind CSS",
+          summary: "",
+          image: "",
+          createdAt: "",
+          updatedAt: "",
+        },
+        {
+          id: "7",
+          title: "Material UI",
+          summary: "",
+          image: "",
+          createdAt: "",
+          updatedAt: "",
+        },
+      ],
       link: "https://linkify.deepakroy.dev/",
     },
-    {
-      id: 3,
-      title: "Schooletics",
-      description:
-        "Schooletics offers customizable sports training programs delivered across multiple environments schools, residential complexes, and individual sessions aiming to build athletic skills effectively. Located in Kolkata, it provides accessible contact details and has an active portfolio of past programs showcased on the site. The platform is built using WordPress with Bootstrap CSS, leverages G Suite for communication and collaboration, and incorporates SEO best practices to enhance its online visibility.",
-      image: "/projects/schooletics-white.png",
-      tech: ["WordPress", "Bootstrap", "CSS", "JavaScript"],
-      link: "https://schooletics.in",
-    },
   ];
+
+  const projectList =
+    projects && projects.length > 0 ? projects : defaultProjects;
+  console.log("Using project list:", projectList);
 
   return (
     <section id="projects" className="py-24 px-6">
       <h2 className="text-4xl font-bold text-center mb-16 ">My Projects</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
-        {projects.map((project) => (
+        {projectList.map((project) => (
           <Card key={`${project.id}-${project.title}`} isBlurred>
             <CardHeader className="flex-col items-start">
               <Image
-                src={project.image}
+                src={`${process.env.BASE_URL}/${project.image}`}
                 alt={project.title}
                 className="w-full h-full object-cover object-center p-5"
               />
@@ -56,8 +129,8 @@ export default function Projects() {
               <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
               <p className="text-gray-600 mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech.map((tech, index) => (
-                  <Chip key={index}>{tech}</Chip>
+                {project.skills.map((skill) => (
+                  <Chip key={skill.id}>{skill.title}</Chip>
                 ))}
               </div>
             </CardBody>
