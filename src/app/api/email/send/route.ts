@@ -2,9 +2,16 @@ import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
 import { ContactEmailTemplate } from "@/components/email-template";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    return new Response("Resend API key missing", { status: 500 });
+  }
+
+  const resend = new Resend(apiKey);
+
   try {
     const { name, email, message } = await req.json();
 
